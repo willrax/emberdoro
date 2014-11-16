@@ -1,0 +1,41 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700,600,400);
+@import "bower_components/font-awesome/scss/font-awesome";
+@import "bower_components/sweetalert/lib/sweet-alert";
+@import "bower_components/grid/grid";
+@import "timer";
+@import "tasks";
+
+body, html {
+  font-family: "Open Sans", sans-serif;
+  height: 100vh;
+  margin: 0;
+}
+
+.row {
+  margin: 0;
+}
+
+.col {
+  padding: 0;
+}
+
+.section {
+  height: 100vh;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.center {
+  text-align: center;
+}
+
+@media screen and (max-width: 568px) {
+  .row {
+    .col {
+      padding: 0;
+    }
+  }
+  .section {
+    height: 50vh;
+  }
+}

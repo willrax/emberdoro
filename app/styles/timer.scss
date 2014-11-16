@@ -1,0 +1,95 @@
+@import "progress-bar";
+
+#timer {
+  background-color: #e74c3c;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#counter-container {
+  margin-top: 30%;
+}
+
+.counter {
+  text-align: center;
+  font-size: 70px;
+  margin: 30px 0;
+  color: #ECF0F1;
+}
+
+i {
+  @extend .fa;
+  @extend .fa-fw;
+}
+
+.controls {
+  text-align: center;
+  color: #ECF0F1;
+
+  i {
+    -webkit-animation-duration: 0.2s;
+    -webkit-animation-delay: 0s;
+    @extend .fa-3x;
+    margin: 0 10px;
+  }
+}
+
+.pomodoros {
+  margin: 10px;
+
+  i {
+    @extend .fa-2x;
+    margin: 0 10px;
+    color: #ECF0F1;
+  }
+}
+
+.timer-wrap {
+  margin-top: 20%;
+}
+
+@media screen and (max-width: 568px) {
+  .timer-wrap {
+    margin-top: -1%;
+  }
+
+  .progress-radial {
+    width: 290px;
+    height: 290px;
+  }
+
+  .progress-radial .overlay {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .timer-wrap {
+    margin-top: -1%;
+  }
+
+  #timer {
+    padding: 15px;
+  }
+
+  #counter-container {
+    margin-top: 20%;
+  }
+
+  .progress-radial {
+    width: 255px;
+    height: 255px;
+  }
+
+  .progress-radial .overlay {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 235px;
+    height: 235px;
+  }
+}

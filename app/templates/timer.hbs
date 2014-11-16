@@ -1,0 +1,23 @@
+<div id="timer" class="section">
+  <div class="timer-wrap">
+    <div {{bind-attr class=":progress-radial timerProgress"}}>
+      <div class="overlay">
+        <div id="counter-container">
+          <div class="counter">
+            {{format-counter counter}}
+          </div>
+
+          <div class="controls">
+            {{#if showPause}}
+              <i {{bind-attr class=":fa-pause clickingClass"}} {{action "pauseTimer"}}></i>
+            {{else}}
+              <i {{bind-attr class=":fa-play clickingClass"}} {{action "startTimer"}}></i>
+            {{/if}}
+
+            <i {{bind-attr class=":fa-stop stopPulse"}} {{action "stopTimer"}}></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

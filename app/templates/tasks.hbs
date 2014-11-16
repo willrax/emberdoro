@@ -1,0 +1,42 @@
+<div id="tasks" class="section">
+  {{input type="text" class="task-field" placeholder="What needs doing?" value=newTitle action="createTask"}}
+
+  <ul id="task-list">
+    {{#each incompleteTasks itemController="task"}}
+      <li {{bind-attr class=":task-item isCompleted:complete isEditing:editing"}}>
+        {{#if isEditing}}
+          {{view "edit-task" class="task-field" value=title focus-out="acceptChanges" insert-newline="acceptChanges"}}
+        {{else}}
+            {{input type="checkbox" checked=isCompleted class="toggle"}}
+          <label {{action "editTask" on="doubleClick"}}>
+            {{title}}
+          </label>
+        {{/if}}
+      </li>
+    {{else}}
+      <div class="no-tasks">
+        No tasks remaining.
+      </div>
+    {{/each}}
+  </ul>
+
+    <div id="completed-tasks">
+      {{#if completedTasks}}
+        <h3 class="center">Completed Tasks</h3>
+        <div {{action "clearCompleted"}} class="delete-action center">Clear</div>
+      {{else}}
+        <h3 class="center">No Completed Tasks</h3>
+      {{/if}}
+
+      <ul id="task-list">
+        {{#each completedTasks itemController="task"}}
+        <li {{bind-attr class=":task-item isCompleted:complete"}}>
+          <label {{action "editTask" on="doubleClick"}}>
+            {{input type="checkbox" checked=isCompleted class="toggle"}}
+            {{title}}
+          </label>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+</div>

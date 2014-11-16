@@ -1,0 +1,64 @@
+#tasks {
+  overflow: scroll;
+  background-color: #ecf0f1;
+}
+
+.task-field {
+  outline: none;
+  width: 100%;
+  font-size: 18px;
+  height: 32px;
+  margin: 0 auto;
+  padding: 0 7px;
+}
+
+#task-list {
+  list-style: none;
+  padding: 10px;
+  font-size: 18px;
+
+  .no-tasks {
+    color: lightgrey;
+  }
+
+  .task-item {
+    margin-bottom: 10px;
+
+    input[type=checkbox] {
+      width: 25px;
+      height: 25px;
+      padding: 0;
+      margin:0;
+      vertical-align: middle;
+      position: relative;
+      top: 0px;
+      *overflow: hidden;
+    }
+
+    &.complete {
+      color: grey;
+      text-decoration: line-through;
+    }
+  }
+}
+
+#completed-tasks {
+  margin-top: 50px;
+
+  h4 {
+    margin: 5px 0;
+  }
+
+  .delete-action {
+    border-radius: 4px;
+    padding: 3px;
+    margin: 0 auto;
+    width: 75px;
+    margin-top: 10px;
+    border: 1px solid lightgrey;
+
+    &:hover {
+      border: 1px solid grey;
+    }
+  }
+}
