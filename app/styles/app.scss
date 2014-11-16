@@ -2,34 +2,27 @@
 @import "bower_components/font-awesome/scss/font-awesome";
 @import "bower_components/sweetalert/lib/sweet-alert";
 @import "bower_components/grid/grid";
+@import "globals";
 @import "timer";
 @import "tasks";
 @import "navigation";
 
 body, html {
   font-family: "Open Sans", sans-serif;
-  background-color: #ecf0f1;
+  background-color: #ECF0F1;
+  height: 100%;
   margin: 0;
-}
 
-.row {
-  margin: 0;
-}
-
-.col {
-  padding: 0;
+  > .ember-view {
+    height: 100%;
+  }
 }
 
 .section {
-  padding: 20px;
-  overflow: hidden;
+  padding: 0 20px;
 }
 
-.center {
-  text-align: center;
-}
-
-@media screen and (max-width: 667px) {
+@media screen and (max-width: 380px) {
   .row {
     .col {
       padding: 0;

@@ -7,7 +7,11 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: #ecf0f1;
+  color: #ECF0F1;
+}
+
+.timer-wrapper {
+  margin-top: 15%;
 }
 
 #counter-container {
@@ -20,65 +24,40 @@
   margin: 30px 0;
 }
 
-i {
-  @extend .fa;
-  @extend .fa-fw;
-}
-
 .controls {
   text-align: center;
 
   i {
+    @extend .fa-3x;
     cursor: pointer;
+    margin: 0 10px;
     -webkit-animation-duration: 0.2s;
     -webkit-animation-delay: 0s;
-    @extend .fa-3x;
-    margin: 0 10px;
   }
 }
 
-.timer-wrap {
-  margin-top: 15%;
-}
+@media screen and (max-width: 380px) {
+  #timer {
+    margin-bottom: 40px;
+  }
 
-@media screen and (max-width: 568px) {
-  .timer-wrap {
+  .timer-wrapper {
     margin-top: -1%;
   }
 
-  .progress-radial {
-    width: 290px;
-    height: 290px;
+  #counter-container {
+    margin-top: 23%;
   }
 
-  .progress-radial .overlay {
+  .progress-radial {
     width: 260px;
     height: 260px;
   }
-}
-
-@media screen and (max-width: 667px) {
-  .timer-wrap {
-    margin-top: 8%;
-  }
-
-  #timer {
-    padding: 15px;
-  }
-
-  #counter-container {
-    margin-top: 20%;
-  }
-
-  .progress-radial {
-    width: 255px;
-    height: 255px;
-  }
 
   .progress-radial .overlay {
-    margin-left: 10px;
-    margin-top: 10px;
     width: 235px;
     height: 235px;
+    margin-left: 11px;
+    margin-top: 11px;
   }
 }
