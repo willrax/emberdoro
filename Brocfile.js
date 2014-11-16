@@ -20,5 +20,13 @@ var app = new EmberApp();
 app.import("bower_components/sweetalert/lib/sweet-alert.min.js");
 app.import("bower_components/moment/moment.js");
 app.import("bower_components/animate.css/animate.min.css");
+app.import("bower_components/normalize.css/normalize.css");
+app.import("bower_components/fastclick/lib/fastclick.js");
+
+app.import("bower_components/font-awesome/fonts/fontawesome-webfont.eot", { destDir: "fonts" });
+app.import("bower_components/font-awesome/fonts/fontawesome-webfont.svg", { destDir: "fonts" });
+app.import("bower_components/font-awesome/fonts/fontawesome-webfont.ttf", { destDir: "fonts" });
+app.import("bower_components/font-awesome/fonts/fontawesome-webfont.woff", { destDir: "fonts" });
+app.import("bower_components/font-awesome/fonts/FontAwesome.otf", { destDir: "fonts" });
 
 module.exports = app.toTree();

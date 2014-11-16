@@ -1,5 +1,6 @@
 #tasks {
-  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
   background-color: #ecf0f1;
 }
 
@@ -50,6 +51,7 @@
   }
 
   .delete-action {
+    cursor: pointer;
     border-radius: 4px;
     padding: 3px;
     margin: 0 auto;
