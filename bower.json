@@ -12,6 +12,14 @@
     "ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.2",
     "ember-qunit": "0.1.8",
     "ember-qunit-notifications": "0.0.4",
-    "qunit": "~1.15.0"
+    "qunit": "~1.15.0",
+    "grid": "willrax/grid",
+    "moment": "~2.8.3",
+    "font-awesome": "~4.2.0",
+    "sweetalert": "~0.3.2",
+    "animate.css": "~3.2.0"
+  },
+  "resolutions": {
+    "jquery": ">= 1.7.0 < 2.2.0"
   }
 }
