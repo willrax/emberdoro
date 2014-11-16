@@ -3,14 +3,14 @@ import Ember from "ember";
 export default Ember.ObjectController.extend({
   completedPomodoros: [1],
   timerRunning: false,
-  counter: 10000,
+  counter: 1500000,
   time: null,
   clickingClass: "",
   showPause: false,
   stopPulse: "",
 
   timerProgress: function() {
-    var progress = ((this.get("counter") / 10000) * 100);
+    var progress = ((this.get("counter") / 1500000) * 100);
     return "progress-" + Math.round(100 - progress);
   }.property("counter"),
 
@@ -83,7 +83,7 @@ export default Ember.ObjectController.extend({
         this.set("stopPulse", "");
       }, 500);
       this.set("timerRunning", false);
-      this.set("counter", 10000);
+      this.set("counter", 1500000);
     }
   }
 });
