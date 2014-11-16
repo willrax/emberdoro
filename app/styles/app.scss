@@ -4,10 +4,11 @@
 @import "bower_components/grid/grid";
 @import "timer";
 @import "tasks";
+@import "navigation";
 
 body, html {
   font-family: "Open Sans", sans-serif;
-  height: 100vh;
+  background-color: #ecf0f1;
   margin: 0;
 }
 
@@ -20,7 +21,6 @@ body, html {
 }
 
 .section {
-  height: 100vh;
   padding: 20px;
   overflow: hidden;
 }
@@ -29,13 +29,10 @@ body, html {
   text-align: center;
 }
 
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 667px) {
   .row {
     .col {
       padding: 0;
     }
-  }
-  .section {
-    height: 50vh;
   }
 }

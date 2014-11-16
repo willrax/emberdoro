@@ -1,6 +1,6 @@
-$barColor: tomato;
-$overlayColor: #fffde8;
-$backColor: #ECF0F1;
+$barColor: #FEB1A3;
+$overlayColor: tomato;
+$backColor: white;
 
 .progress-radial {
   margin: 0 auto;
@@ -8,13 +8,12 @@ $backColor: #ECF0F1;
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  border: none;
-  background-color: $barColor;
+  border: 1px #ecf0f1 solid;
 }
 
 .progress-radial .overlay {
   position: absolute;
-  background-color: #e74c3c;
+  background-color: $overlayColor;
   width: 370px;
   height: 370px;
   border-radius: 50%;
