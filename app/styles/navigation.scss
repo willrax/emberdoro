@@ -1,16 +1,22 @@
-header {
-  bottom: 0;
-  height: 10px;
-  color: #ecf0f1;
-  padding: 0 60px;
-
-  .brand {
-    margin: 0 0 0 50px;
-    color: #4A4A4A;
-  }
+.row.footer {
+  margin-bottom: 0;
+  padding: 0 20px;
 }
 
 footer {
-  content: "";
-  height: 10px;
+  height: 44px;
+  color: #4A4A4A;
+
+  a {
+    text-decoration: none;
+    color: #4A4A4A;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .nav-brand {
+    margin: 5px 0 0 0;
+  }
 }

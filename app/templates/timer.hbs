@@ -8,10 +8,10 @@
           </div>
 
           <div class="controls">
-            {{#if showPause}}
-              <i {{bind-attr class=":fa-pause clickingClass"}} {{action "pauseTimer"}}></i>
-            {{else}}
+            {{#if paused}}
               <i {{bind-attr class=":fa-play clickingClass"}} {{action "startTimer"}}></i>
+            {{else}}
+              <i {{bind-attr class=":fa-pause clickingClass"}} {{action "pauseTimer"}}></i>
             {{/if}}
 
             <i {{bind-attr class=":fa-stop stopPulse"}} {{action "stopTimer"}}></i>
