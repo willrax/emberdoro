@@ -39,10 +39,12 @@ export default Ember.Controller.extend({
     this.store.createRecord("pomodoro").save();
     this.send("stopTimer");
 
+    var message;
+
     if (this.get("completedPomodoros") % 4 === 0) {
-      var message = "30 minute break.";
+      message = "30 minute break.";
     } else {
-      var message = "5 minute break.";
+      message = "5 minute break.";
     }
 
     this.sendNotification(message);

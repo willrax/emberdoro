@@ -36,4 +36,4 @@ export default Ember.Component.extend({
       return value;
     }
   }.property("model.isCompleted"),
-})
+});
