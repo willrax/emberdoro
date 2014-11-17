@@ -7,7 +7,6 @@ export default Ember.Controller.extend({
   clickingClass: "",
   counter: 1500000,
   stopPulse: "",
-  paused: true,
 
   timerProgress: function() {
     var progress = ((this.get("counter") / 1500000) * 100);
@@ -18,6 +17,7 @@ export default Ember.Controller.extend({
     startTimer: function() {
       this.set("timerRunning", true);
       this.set("currentTime", moment());
+      this.runTimer();
     },
 
     pauseTimer: function() {
@@ -25,10 +25,7 @@ export default Ember.Controller.extend({
     },
 
     stopTimer: function() {
-      if (this.get("paused")) {
-        this.send("pauseTimer");
-      }
-      this.set("stopPulse", "animated rubberBand");
+      this.animateStopButton();
       this.set("timerRunning", false);
       this.set("counter", 1500000);
     }
@@ -57,42 +54,39 @@ export default Ember.Controller.extend({
 
   runTimer: function() {
     Ember.run.later(this, function() {
-      var controller = this;
-
       if (this.get("timerRunning")) {
         var difference = moment().diff(this.get("currentTime"));
         this.set("counter", this.get("counter") - difference);
 
         if (this.get("counter") <= 0) {
-          controller.completePomodoro();
+          this.completePomodoro();
         } else {
           this.set("currentTime", moment());
+          this.runTimer();
         }
       }
     }, 1000);
-  }.observes("currentTime"),
+  },
 
-  toggleTimerPauseControl: function() {
-    this.set("clickingClass", "animated zoomOut");
+  animateStopButton: function() {
+    this.set("stopPulse", "animated rubberBand");
 
-    if (this.get("paused")) {
-      Ember.run.later(this, function(){
-        this.set("paused", false);
-      }, 200);
-    } else {
-      Ember.run.later(this, function(){
-        this.set("paused", true);
-      }, 200);
-    }
-  }.observes("timerRunning"),
-
-  fadeInTimerControl: function() {
-    this.set("clickingClass", "animated zoomIn");
-  }.observes("paused"),
-
-  clearStopButtonAnimation: function() {
     Ember.run.later(this, function() {
       this.set("stopPulse", "");
     }, 200);
-  }.observes("stopPulse")
+  },
+
+  animatePlayPauseButton: function() {
+    this.set("clickingClass", "animated zoomIn");
+
+    if (this.get("timerRunning")) {
+      Ember.run.later(this, function(){
+        this.set("clickingClass", "");
+      }, 200);
+    } else {
+      Ember.run.later(this, function(){
+        this.set("clickingClass", "");
+      }, 200);
+    }
+  }.observes("timerRunning"),
 });
