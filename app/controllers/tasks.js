@@ -1,6 +1,8 @@
 import Ember from "ember";
 
-export default Ember.ArrayController.extend({
+export default Ember.Controller.extend({
+  fields: {},
+
   incompleteTasks: Ember.computed.filter("model", function(task) {
     return task.get("notCompleted");
   }).property("model.@each.isCompleted"),
@@ -20,12 +22,10 @@ export default Ember.ArrayController.extend({
     },
 
     createTask: function() {
-      var newTask = this.store.createRecord("task", {
-        title: this.get("newTitle"),
-        isCompleted: false,
-        createdAt: moment().toString()
-      });
-      this.set("newTitle", "");
+      var newTask = this.store.createRecord("task", this.get("fields"));
+      newTask.set("isCompleted", false);
+      newTask.set("createdAt", moment().toString());
+      this.set("fields", {});
       newTask.save();
     }
   }

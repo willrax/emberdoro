@@ -1,48 +1,48 @@
 import Ember from "ember";
 
-export default Ember.ObjectController.extend({
-  completedPomodoros: [1],
+export default Ember.Controller.extend({
+  completedPomodoros: 0,
   timerRunning: false,
-  counter: 1500000,
-  time: null,
+  currentTime: null,
   clickingClass: "",
-  showPause: false,
+  counter: 1500000,
   stopPulse: "",
+  paused: true,
 
   timerProgress: function() {
     var progress = ((this.get("counter") / 1500000) * 100);
     return "progress-" + Math.round(100 - progress);
   }.property("counter"),
 
-  runTimer: function() {
-    Ember.run.later(this, function() {
-      var controller = this;
+  actions: {
+    startTimer: function() {
+      this.set("timerRunning", true);
+      this.set("currentTime", moment());
+    },
 
-      if (this.get("timerRunning")) {
-        var difference = moment().diff(this.get("time"));
-        this.set("counter", this.get("counter") - difference);
-        this.set("time", moment());
+    pauseTimer: function() {
+      this.set("timerRunning", false);
+    },
 
-        if (this.get("counter") <= 0) {
-          controller.completePomodoro();
-        } else {
-          controller.runTimer();
-        }
+    stopTimer: function() {
+      if (this.get("paused")) {
+        this.send("pauseTimer");
       }
-    }, 1000);
+      this.set("stopPulse", "animated rubberBand");
+      this.set("timerRunning", false);
+      this.set("counter", 1500000);
+    }
   },
 
   completePomodoro: function() {
-    this.send("stopTimer");
-    this.get("completedPomodoros").pushObject(1);
+    this.set("completedPomodoros", this.get("completedPomodoros") + 1);
     this.store.createRecord("pomodoro").save();
+    this.send("stopTimer");
 
-    var message = "";
-
-    if (this.get("completedPomodoros").length % 4 === 0) {
-      message = "30 minute break.";
+    if (this.get("completedPomodoros") % 4 === 0) {
+      var message = "30 minute break.";
     } else {
-      message = "5 minute break.";
+      var message = "5 minute break.";
     }
 
     this.sendNotification(message);
@@ -53,37 +53,44 @@ export default Ember.ObjectController.extend({
     new Notification("Pomodoro Complete", { body: "Take a" + " " + message });
   },
 
-  actions: {
-    startTimer: function() {
-      this.set("clickingClass", "animated zoomOut");
-      Ember.run.later(this, function(){
-        this.set("showPause", true);
-        this.set("clickingClass", "animated zoomIn");
-      }, 200);
-      this.set("timerRunning", true);
-      this.set("time", moment());
-      this.runTimer();
-    },
+  runTimer: function() {
+    Ember.run.later(this, function() {
+      var controller = this;
 
-    pauseTimer: function() {
-      this.set("clickingClass", "animated zoomOut");
-      Ember.run.later(this, function(){
-        this.set("showPause", false);
-        this.set("clickingClass", "animated zoomIn");
-      }, 200);
-      this.set("timerRunning", false);
-    },
+      if (this.get("timerRunning")) {
+        var difference = moment().diff(this.get("currentTime"));
+        this.set("counter", this.get("counter") - difference);
 
-    stopTimer: function() {
-      if (this.get("showPause")) {
-        this.send("pauseTimer");
+        if (this.get("counter") <= 0) {
+          controller.completePomodoro();
+        } else {
+          this.set("currentTime", moment());
+        }
       }
-      this.set("stopPulse", "animated rubberBand");
+    }, 1000);
+  }.observes("currentTime"),
+
+  toggleTimerPauseControl: function() {
+    this.set("clickingClass", "animated zoomOut");
+
+    if (this.get("paused")) {
       Ember.run.later(this, function(){
-        this.set("stopPulse", "");
-      }, 500);
-      this.set("timerRunning", false);
-      this.set("counter", 1500000);
+        this.set("paused", false);
+      }, 200);
+    } else {
+      Ember.run.later(this, function(){
+        this.set("paused", true);
+      }, 200);
     }
-  }
+  }.observes("timerRunning"),
+
+  fadeInTimerControl: function() {
+    this.set("clickingClass", "animated zoomIn");
+  }.observes("paused"),
+
+  clearStopButtonAnimation: function() {
+    Ember.run.later(this, function() {
+      this.set("stopPulse", "");
+    }, 200);
+  }.observes("stopPulse")
 });
