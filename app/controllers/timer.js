@@ -69,23 +69,23 @@ export default Ember.Controller.extend({
   },
 
   animateStopButton: function() {
-    this.set("stopPulse", "animated rubberBand");
+    this.set("stopButtonAnimation", "animated rubberBand");
 
     Ember.run.later(this, function() {
-      this.set("stopPulse", "");
+      this.set("stopButtonAnimation", "");
     }, 200);
   },
 
   animatePlayPauseButton: function() {
-    this.set("clickingClass", "animated zoomIn");
+    this.set("pausePlayAnimationClass", "animated zoomIn");
 
     if (this.get("timerRunning")) {
       Ember.run.later(this, function(){
-        this.set("clickingClass", "");
+        this.set("pausePlayAnimationClass", "");
       }, 200);
     } else {
       Ember.run.later(this, function(){
-        this.set("clickingClass", "");
+        this.set("pausePlayAnimationClass", "");
       }, 200);
     }
   }.observes("timerRunning"),

@@ -9,12 +9,12 @@
 
           <div class="controls">
             {{#if timerRunning}}
-              <i {{bind-attr class=":fa-pause clickingClass"}} {{action "pauseTimer"}}></i>
+              <i {{bind-attr class=":fa-pause pausePlayAnimationClass"}} {{action "pauseTimer"}}></i>
             {{else}}
               <i {{bind-attr class=":fa-play clickingClass"}} {{action "startTimer"}}></i>
             {{/if}}
 
-            <i {{bind-attr class=":fa-stop stopAnimation"}} {{action "stopTimer"}}></i>
+            <i {{bind-attr class=":fa-stop stopButtonAnimation"}} {{action "stopTimer"}}></i>
           </div>
         </div>
       </div>
