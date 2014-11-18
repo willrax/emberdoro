@@ -49,7 +49,9 @@ export default Ember.Controller.extend({
   },
 
   sendNotification: function(message) {
-    new Notification("Pomodoro Complete", { body: "Take a" + " " + message });
+    if ((window.Notification !== undefined)) {
+      new Notification("Pomodoro Complete", { body: "Take a" + " " + message });
+    }
   },
 
   runTimer: function() {
