@@ -17,9 +17,9 @@
     "moment": "~2.8.3",
     "font-awesome": "~4.2.0",
     "sweetalert": "~0.3.2",
-    "animate.css": "~3.2.0",
     "normalize.css": "~3.0.2",
-    "fastclick": "~1.0.3"
+    "fastclick": "~1.0.3",
+    "animate.css": "~3.2.0"
   },
   "resolutions": {
     "jquery": ">= 1.7.0 < 2.2.0"

@@ -19,8 +19,8 @@ var app = new EmberApp();
 
 app.import("bower_components/sweetalert/lib/sweet-alert.min.js");
 app.import("bower_components/moment/moment.js");
-app.import("bower_components/animate.css/animate.min.css");
 app.import("bower_components/normalize.css/normalize.css");
+app.import("bower_components/animate.css/animate.min.css");
 app.import("bower_components/fastclick/lib/fastclick.js");
 
 app.import("bower_components/font-awesome/fonts/fontawesome-webfont.eot", { destDir: "fonts" });
