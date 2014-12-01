@@ -18,10 +18,7 @@
     "sweetalert": "~0.3.2",
     "normalize.css": "~3.0.2",
     "fastclick": "~1.0.3",
-    "animate.css": "~3.2.0"
-  },
-  "resolutions": {
-    "jquery": ">= 1.7.0 < 2.2.0"
+    "animate.css": "~3.2.0",
     "qunit": "~1.15.0"
   }
 }
