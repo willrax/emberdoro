@@ -1,7 +1,7 @@
 import Ember from "ember";
 
 export default Ember.TextField.extend({
-  didInsertElement: function() {
+  focusIn: function() {
     this.$().focus();
-  }
+  }.on('didInsertElement')
 });
