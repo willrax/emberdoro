@@ -1,6 +1,6 @@
 <li {{bind-attr class=":task-item isCompleted:complete isEditing:editing"}}>
   {{#if isEditing}}
-    {{view "edit-task" class="task-field" value=model.title focus-out="acceptChanges" insert-newline="acceptChanges"}}
+    {{edit-task class="task-field" value=model.title focus-out="acceptChanges" insert-newline="acceptChanges"}}
   {{else}}
     {{input type="checkbox" checked=isCompleted class="toggle"}}
 
