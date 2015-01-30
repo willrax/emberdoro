@@ -13,6 +13,11 @@ export default Ember.Controller.extend({
     return "progress-" + Math.round(100 - progress);
   }.property("counter"),
 
+  pulsate: function() {
+    var timerRunning = this.get('timerRunning');
+    return timerRunning ? "animated infinite pulse" : "";
+  }.property("timerRunning"),
+
   actions: {
     startTimer: function() {
       this.set("timerRunning", true);
