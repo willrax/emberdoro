@@ -1,7 +1,7 @@
 <div id="timer" class="section">
   <div class="timer-wrapper">
     <div {{bind-attr class=":progress-radial timerProgress"}}>
-      <div class="overlay">
+      <div {{bind-attr class=":overlay pulsate"}}>
         <div id="counter-container">
           <div class="counter">
             {{format-counter counter}}
