@@ -15,6 +15,7 @@ module.exports = function(environment) {
 
     // Define and set feature flags here.
     featureFlags: {
+      "pulsate-animation": false
     },
 
     APP: {

@@ -14,8 +14,12 @@ export default Ember.Controller.extend({
   }.property("counter"),
 
   pulsate: function() {
-    var timerRunning = this.get('timerRunning');
-    return timerRunning ? "animated infinite pulse" : "";
+    var timerRunning = this.get("timerRunning");
+
+
+    if (this.features.isEnabled("pulsate-animation")){
+      return timerRunning ? "animated infinite pulse" : "";
+    };
   }.property("timerRunning"),
 
   actions: {
