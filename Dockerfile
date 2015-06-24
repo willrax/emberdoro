@@ -10,6 +10,7 @@ RUN npm install && bower install --allow-root
 RUN ember build --environment production
 
 WORKDIR /
+RUN mkdir /app
 RUN mv /emberdoro/dist /app
 
 ADD ./default.conf /etc/nginx/conf.d/default.conf
