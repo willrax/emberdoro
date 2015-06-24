@@ -8,6 +8,7 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 ADD . $APP_HOME
 
+RUN npm install && bower install --allow-root
 RUN ember build --environment production
 
 RUN mv /$APP_HOME/dist /app
