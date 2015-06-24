@@ -3,7 +3,8 @@ FROM nginx
 RUN apt-get update && apt-get install -y git nodejs-legacy npm
 RUN npm install -g bower ember-cli
 
-ADD ./* /emberdoro
+RUN mkdir /emberdoro
+ADD ./* /emberdoro/
 WORKDIR /emberdoro
 RUN npm install && bower install --allow-root
 RUN ember build --environment production
